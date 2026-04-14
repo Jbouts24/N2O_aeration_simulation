@@ -1,0 +1,94 @@
+mode: baseline
+scenario_name: base_case
+output_dir: results/base_case
+
+simulation:
+  duration_days: 3.0
+  points_per_day: 240
+
+reactor:
+  volume_m3: 2000.0
+  hrt_days: 0.50
+  srt_days: 12.0
+  temperature_c: 20.0
+  pH: 7.5
+
+influent:
+  nh4_mgN_L: 22.0
+  no2_mgN_L: 0.1
+  no3_mgN_L: 1.0
+  cod_mgCOD_L: 30.0
+  do_mgO2_L: 0.0
+
+initial_conditions:
+  nh4_mgN_L: 16.0
+  no2_mgN_L: 0.3
+  no3_mgN_L: 3.0
+  n2o_mgN_L: 0.02
+  cod_mgCOD_L: 20.0
+  do_mgO2_L: 1.2
+
+biomass_initial:
+  aob_mgCOD_L: 120.0
+  nob_mgCOD_L: 85.0
+  het_mgCOD_L: 180.0
+
+controller:
+  type: fixed
+  target_do_mg_L: 1.5
+  kp: 18.0
+  min_kla_per_day: 1.0
+  max_kla_per_day: 90.0
+  nh4_low_mgN_L: 2.0
+  nh4_high_mgN_L: 8.0
+  target_do_low_mg_L: 0.8
+  target_do_mid_mg_L: 1.5
+  target_do_high_mg_L: 2.5
+
+kinetics:
+  q_aob_max_per_day: 0.22
+  q_nob_max_per_day: 0.07
+  q_den_max_per_day: 0.02
+  b_aob_per_day: 0.03
+  b_nob_per_day: 0.025
+  b_het_per_day: 0.03
+  y_aob_mgCOD_per_mgN: 0.15
+  y_nob_mgCOD_per_mgN: 0.04
+  y_het_mgCOD_per_mgN: 0.08
+  k_nh4_mgN_L: 1.0
+  k_no2_nob_mgN_L: 0.4
+  k_no2_den_mgN_L: 0.3
+  k_no3_den_mgN_L: 0.5
+  k_cod_mgCOD_L: 20.0
+  k_o2_aob_mg_L: 0.10
+  k_o2_nob_mg_L: 1.50
+  k_o2_het_mg_L: 0.20
+  k_o2_nd_mg_L: 0.25
+  k_do_hao_mg_L: 0.50
+  k_no2_nd_mgN_L: 0.50
+  k_n2o_mgN_L: 0.03
+  nd_yield: 0.20
+  hao_yield: 0.0002
+  den_n2o_yield_base: 0.020
+  k_cod_incomplete_mgCOD_L: 15.0
+  k_cod_n2o_red_mgCOD_L: 10.0
+  k_red_per_day: 0.015
+  theta_nitrification: 1.072
+  theta_denitrification: 1.060
+  theta_reduction: 1.040
+  oxygen_per_nh4: 4.57
+  oxygen_per_no2: 1.14
+  cod_per_den_n: 2.86
+  cod_per_n2o_red: 1.50
+
+aeration:
+  do_sat_mg_L: 8.0
+  n2o_kla_factor: 0.015
+  energy_per_kla: 1.0
+
+optimization:
+  enabled: false
+  setpoint_candidates_mg_L: [0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+  w_emission: 1.0
+  w_energy: 0.05
+  w_effluent_nh4: 5.0

@@ -1,0 +1,10 @@
+extends: base_case.yaml
+scenario_name: dynamic_do
+output_dir: results/dynamic_do
+controller:
+  type: demand
+  target_do_low_mg_L: 0.8
+  target_do_mid_mg_L: 1.5
+  target_do_high_mg_L: 2.5
+  nh4_low_mgN_L: 2.0
+  nh4_high_mgN_L: 8.0

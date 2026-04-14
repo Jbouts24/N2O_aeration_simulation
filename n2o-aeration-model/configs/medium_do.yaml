@@ -1,0 +1,6 @@
+extends: base_case.yaml
+scenario_name: medium_do
+output_dir: results/medium_do
+controller:
+  type: fixed
+  target_do_mg_L: 1.5
